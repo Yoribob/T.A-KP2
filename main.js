@@ -63,29 +63,35 @@ function setupGraphData() {
   }
 }
 
-function drawGraph() {
-  const svg = document.getElementById("graphSvg");
-  svg.innerHTML = "";
+const xmlNamespace = "http://www.w3.org/2000/svg";
+const svg = document.getElementById("graphSvg");
+function createArrow(id, color) {
+  let defs = svg.querySelector("defs");
+  if (!defs) {
+    defs = document.createElementNS(xmlNamespace, "defs");
+    svg.appendChild(defs);
+  }
 
-  const xmlNamespace = "http://www.w3.org/2000/svg";
-  const defs = document.createElementNS(xmlNamespace, "defs");
   const marker = document.createElementNS(xmlNamespace, "marker");
-
-  marker.setAttribute("id", "arrowHead");
+  marker.setAttribute("id", id);
   marker.setAttribute("viewBox", "0 0 10 10");
-  marker.setAttribute("refX", "10");
+  marker.setAttribute("refX", "9");
   marker.setAttribute("refY", "5");
-  marker.setAttribute("markerWidth", "6");
-  marker.setAttribute("markerHeight", "6");
+  marker.setAttribute("markerWidth", "5");
+  marker.setAttribute("markerHeight", "5");
   marker.setAttribute("orient", "auto-start-reverse");
+  marker.setAttribute("markerUnits", "strokeWidth"); 
 
   const arrowPath = document.createElementNS(xmlNamespace, "path");
   arrowPath.setAttribute("d", "M 0 0 L 10 5 L 0 10 z");
-  arrowPath.setAttribute("fill", "#7a87ff");
+  arrowPath.setAttribute("fill", color);
   marker.appendChild(arrowPath);
   defs.appendChild(marker);
-  svg.appendChild(defs);
+}
 
+function drawGraph() {
+  createArrow("arrowOneWay", "#ff6f6f")
+  createArrow("arrowTwoWay", "#6672ff")
   for (const connection of connectionData) {
     const startPoint = coordinates[connection.from];
     const endPoint = coordinates[connection.to];
@@ -102,13 +108,18 @@ function drawGraph() {
     line.setAttribute("y1", startPoint.y + unitY * padding);
     line.setAttribute("x2", endPoint.x - unitX * padding);
     line.setAttribute("y2", endPoint.y - unitY * padding);
-    line.setAttribute("class", connection.oneWay ? "edge-line one-way" : "edge-line");
+   
     
     if (connection.oneWay) {
-      line.setAttribute("marker-end", "url(#arrowHead)");
+      console.log("not cool")
+      line.setAttribute("marker-end", "url(#arrowOneWay)");
+      line.setAttribute("class", "edge-line-one-way");
+
     } else {
-      line.setAttribute("marker-start", "url(#arrowHead)");
-      line.setAttribute("marker-end", "url(#arrowHead)");
+      console.log("cool");
+      line.setAttribute("marker-start", "url(#arrowTwoWay)");
+      line.setAttribute("marker-end", "url(#arrowTwoWay)");
+      line.setAttribute("class", "edge-line-two-way");
     }
     svg.appendChild(line);
 
