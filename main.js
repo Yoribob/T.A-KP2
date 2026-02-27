@@ -111,12 +111,10 @@ function drawGraph() {
    
     
     if (connection.oneWay) {
-      console.log("not cool")
       line.setAttribute("marker-end", "url(#arrowOneWay)");
       line.setAttribute("class", "edge-line-one-way");
 
     } else {
-      console.log("cool");
       line.setAttribute("marker-start", "url(#arrowTwoWay)");
       line.setAttribute("marker-end", "url(#arrowTwoWay)");
       line.setAttribute("class", "edge-line-two-way");
