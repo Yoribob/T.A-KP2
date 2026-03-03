@@ -267,9 +267,9 @@ function highlightPathOnGraph(path) {
   });
 }
 
-function displayResults(path, totalCost, executionTime) {
+function displayResults(path, totalLength, executionTime) {
   document.getElementById("timeOutput").textContent = executionTime.toFixed(4);
-  document.getElementById("costOutput").textContent = totalCost.toFixed(2);
+  document.getElementById("costOutput").textContent = totalLength.toFixed(2);
 
   const container = document.getElementById("routeOutput");
   const pathNames = path.map(idx => `${idx + 1} ${locationNames[idx]}`).join(" → ");
