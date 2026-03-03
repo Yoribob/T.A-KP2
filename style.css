@@ -199,8 +199,8 @@
     border-radius: 16px;
     background: #f3f4ff;
     box-shadow: inset 0 0 0 1px rgba(112, 125, 255, 0.16);
-  padding: 16px;
-  min-height: 520px;
+    padding: 16px;
+    min-height: 520px;
   }
   
   #graphSvg {
@@ -215,12 +215,6 @@
     
   }
   
-  .edge-line-one-way {
-    stroke-dasharray: 4 4;
-    stroke-width: 2;
-    stroke: #ff6f6f;
-  }
-  
   .edge-label {
     font-size: 13px;
     fill: #3a3f6b;
@@ -231,11 +225,6 @@
   
   .node {
     cursor: pointer;
-  }
-  
-  .node-circle {
-    stroke: #ffffff;
-    stroke-width: 2;
   }
   
   .node-label {
