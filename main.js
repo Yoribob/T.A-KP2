@@ -63,6 +63,7 @@ function setupGraphData() {
 
 const xmlNamespace = "http://www.w3.org/2000/svg";
 const svg = document.getElementById("graphSvg");
+
 function createArrow(id, color) {
   let defs = svg.querySelector("defs");
   if (!defs) {
@@ -78,7 +79,7 @@ function createArrow(id, color) {
   marker.setAttribute("markerWidth", "5");
   marker.setAttribute("markerHeight", "5");
   marker.setAttribute("orient", "auto-start-reverse");
-  marker.setAttribute("markerUnits", "strokeWidth"); 
+  marker.setAttribute("markerUnits", "strokeWidth");
 
   const arrowPath = document.createElementNS(xmlNamespace, "path");
   arrowPath.setAttribute("d", "M 0 0 L 10 5 L 0 10 z");
@@ -88,7 +89,7 @@ function createArrow(id, color) {
 }
 
 function drawGraph() {
-  createArrow("arrowTwoWay", "#6672ff")
+  createArrow("arrowTwoWay", "#6672ff");
   for (const connection of connectionData) {
     const startPoint = coordinates[connection.from];
     const endPoint = coordinates[connection.to];
@@ -105,11 +106,9 @@ function drawGraph() {
     line.setAttribute("y1", startPoint.y + unitY * padding);
     line.setAttribute("x2", endPoint.x - unitX * padding);
     line.setAttribute("y2", endPoint.y - unitY * padding);
-    
     line.setAttribute("marker-start", "url(#arrowTwoWay)");
     line.setAttribute("marker-end", "url(#arrowTwoWay)");
     line.setAttribute("class", "edge-line-two-way");
- 
     svg.appendChild(line);
 
     const label = document.createElementNS(xmlNamespace, "text");
@@ -160,7 +159,7 @@ function focusOnListElement(event) {
   const listItems = document.querySelectorAll("#placesList li");
 
   listItems.forEach(item => item.style.backgroundColor = "transparent");
-  
+
   if (listItems[index]) {
     listItems[index].scrollIntoView({ behavior: "smooth", block: "center" });
     listItems[index].style.backgroundColor = "rgba(255, 214, 165, 0.6)";
@@ -170,7 +169,7 @@ function focusOnListElement(event) {
 function populateUI() {
   const list = document.getElementById("placesList");
   const dropdown = document.getElementById("targetSelect");
-  
+
   list.innerHTML = "";
   dropdown.innerHTML = "";
 
@@ -258,6 +257,15 @@ function reconstructPath(parents, start, end) {
   return path;
 }
 
+function measureTime(fn, runs = 50000) {
+  const start = performance.now();
+  for (let i = 0; i < runs; i++) {
+    fn();
+  }
+  const end = performance.now();
+  return (end - start) / runs;
+}
+
 function highlightPathOnGraph(path) {
   const nodes = document.querySelectorAll(".node");
   nodes.forEach(node => {
@@ -268,12 +276,12 @@ function highlightPathOnGraph(path) {
 }
 
 function displayResults(path, totalLength, executionTime) {
-  document.getElementById("timeOutput").textContent = executionTime.toFixed(4);
+  document.getElementById("timeOutput").textContent = executionTime.toFixed(6);
   document.getElementById("costOutput").textContent = totalLength.toFixed(2);
 
   const container = document.getElementById("routeOutput");
   const pathNames = path.map(idx => `${idx + 1} ${locationNames[idx]}`).join(" → ");
-  
+
   container.innerHTML = `
     <div class="scc-row">
       <span class="scc-label">Шлях:</span>
@@ -289,13 +297,19 @@ function executeRouteSearch() {
   const targetIndex = parseInt(document.getElementById("targetSelect").value);
   const startIndex = 6;
 
-  const startTime = performance.now();
-  const result = (algorithm === "dijkstra") 
+  const elapsed = measureTime(() => {
+    if (algorithm === "dijkstra") {
+      findShortestPathDijkstra(startIndex, targetIndex);
+    } else {
+      findShortestPathBellmanFord(startIndex, targetIndex);
+    }
+  }, 50000);
+
+  const result = (algorithm === "dijkstra")
     ? findShortestPathDijkstra(startIndex, targetIndex)
     : findShortestPathBellmanFord(startIndex, targetIndex);
-  const endTime = performance.now();
 
-  displayResults(result.path, result.cost, endTime - startTime);
+  displayResults(result.path, result.cost, elapsed);
 }
 
 function startApp() {
