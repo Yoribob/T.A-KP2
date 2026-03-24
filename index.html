@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="uk">
+<head>
+  <meta charset="UTF-8">
+  <title>Маршрути від КПІ</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <div class="app">
+    <div class="left-panel">
+      <h1>Найкоротший маршрут від КПІ</h1>
+      <div class="control-group">
+        <label for="algorithmSelect">Алгоритм:</label>
+        <select id="algorithmSelect">
+          <option value="dijkstra">Алгоритм Дейкстра</option>
+          <option value="bellman">Алгоритм Беллмана–Форда</option>
+        </select>
+      </div>
+      <div class="control-group">
+        <label for="targetSelect">Місце призначення:</label>
+        <select id="targetSelect"></select>
+      </div>
+      <button id="runButton">Прокласти маршрут</button>
+      <div class="info">
+        <div><span class="label">Час виконання:</span> <span id="timeOutput">—</span> мс</div>
+        <div><span class="label">Повна відстань:</span> <span id="costOutput">—</span> км</div>
+      </div>
+      <div class="results">
+        <h2>Знайдений маршрут</h2>
+        <div id="routeOutput"></div>
+      </div>
+      <div class="legend">
+        <h2>Список місць</h2>
+        <ol id="placesList"></ol>
+      </div>
+    </div>
+    <div class="right-panel">
+      <h2>Граф сполучень</h2>
+      <div class="graph-container">
+        <svg id="graphSvg" viewBox="0 0 1000 650"></svg>
+      </div>
+      <div class="hint">Стрілки показують напрямок руху. Колір вузла відповідає компоненті.</div>
+    </div>
+  </div>
+  <script src="main.js"></script>
+</body>
+</html>
