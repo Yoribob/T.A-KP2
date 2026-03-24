@@ -1,0 +1,31 @@
+window:
+  width: 800
+  height: 400
+  showArray: True
+
+colors:
+  background: [20, 20, 20]
+  label: [220, 255, 255]
+  input_bg: [40, 40, 40]
+  input_border: [120, 120, 120]
+  input_active_border: [100, 200, 255]
+  input_text: [255, 255, 255]
+  input_placeholder: [150, 150, 150]
+  button_bg: [50, 50, 50]
+  button_border: [200, 200, 200]
+  button_active_border: [100, 200, 255]
+  button_text: [220, 255, 255]
+  item_text: [200, 255, 200]
+  error_bg: [200, 50, 50]
+  error_text: [255, 255, 255]
+  cursor: [255,255,255]
+
+font:
+  size: 28
+  line_height: 20
+
+main:
+  max_input_length: 100
+  max_size: 1000
+  error_timer: 3000
+  cursor_interval: 500
