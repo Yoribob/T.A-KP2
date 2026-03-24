@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="uk">
+<head>
+  <meta charset="UTF-8">
+  <title>КП №3 — Компоненти сильної зв'язності</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <div class="app">
+    <div class="left-panel">
+      <h1>КП №3 — Компоненти сильної зв'язності</h1>
+
+      <div class="control-group">
+        <label for="algorithmSelect">Алгоритм:</label>
+        <select id="algorithmSelect">
+          <option value="tarjan">Алгоритм Тар'яна</option>
+          <option value="path">Алгоритм по шляхах</option>
+        </select>
+      </div>
+
+      <button id="runButton">Знайти КСЗ</button>
+
+      <div class="info">
+        <div><span class="label">Час виконання:</span> <span id="timeOutput">—</span> мс</div>
+        <div><span class="label">Кількість КСЗ:</span> <span id="countOutput">—</span></div>
+        <div><span class="label">Вершин у графі:</span> <span>11</span></div>
+        <div><span class="label">Ребер у графі:</span> <span id="edgeCountOutput">—</span></div>
+      </div>
+
+      <div class="results">
+        <h2>Знайдені компоненти</h2>
+        <div id="sccOutput"><span class="hint-text">Натисніть «Знайти КСЗ»</span></div>
+      </div>
+
+      <div class="legend">
+        <h2>Список місць</h2>
+        <ol id="placesList"></ol>
+      </div>
+    </div>
+
+    <div class="right-panel">
+      <h2>Граф сполучень Києва</h2>
+      <div class="graph-container">
+        <svg id="graphSvg" viewBox="0 0 960 780"></svg>
+      </div>
+      <div class="perf-hint" id="perfHint">Виберіть алгоритм і натисніть «Знайти КСЗ»</div>
+    </div>
+  </div>
+
+  <script src="main.js"></script>
+</body>
+</html>
