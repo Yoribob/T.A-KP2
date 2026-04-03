@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="uk">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>КП №4 — АТД Черга (Кампус)</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="app-container">
+        <header class="app-header">
+            <h1>КП №4 - АТД «Черга»</h1>
+            <div class="subtitle">Система проведення іспитів «Кампус»</div>
+        </header>
+
+        <main class="main-content">
+            <section id="setupSection" class="card">
+                <h2><span class="icon"></span> Список студентів на іспит</h2>
+                <div id="studentInputs" class="inputs-grid"></div>
+                <div class="btn-group">
+                    <button class="btn-secondary" id="addStudentBtn">+ Додати студента</button>
+                    <button class="btn-primary" id="startExamBtn">Розпочати іспит</button>
+                </div>
+            </section>
+
+            <section id="examSection" class="card" style="display:none">
+                <div class="stage-banner">
+                    <div class="stage-info">
+                       
+                        <div>
+                            <div id="stageLabel">Етап 1: Теорія</div>
+                            <small id="implLabel" class="text-muted"></small>
+                        </div>
+                    </div>
+                    <button class="btn-danger" id="resetBtn">↺ Скинути все</button>
+                </div>
+
+                <div class="exam-grid">
+                    <div id="studentCard" class="student-active-card">
+                        <div class="book-id" id="currentBookNumber">№000</div>
+                        <h3 id="currentStudentName">ПІБ Студента</h3>
+                        
+                        <div class="task-box">
+                            <label>Поточне завдання:</label>
+                            <p id="taskFragmentDisplay">...</p>
+                        </div>
+
+                        <div class="grade-input-group">
+                            <input type="number" id="gradeInput" min="0" max="100" placeholder="Бал">
+                            <button class="btn-primary" id="submitGradeBtn">Виставити бал →</button>
+                        </div>
+                    </div>
+
+                    <div id="doneBox" class="success-card" style="display:none">
+                        Іспит завершено. Всі оцінки виставлені в систему.
+                    </div>
+
+                    <div class="queue-viz">
+                        <h3>Поточна черга</h3>
+                        <div id="queueDisplay" class="scroll-area"></div>
+                    </div>
+                </div>
+
+                <div class="results-table">
+                    <h3>Електронна відомість</h3>
+                    <div id="completedList" class="scroll-area horizontal"></div>
+                </div>
+            </section>
+
+            <section class="card log-section">
+                <h3>Журнал дій системи</h3>
+                <div id="activityLog" class="log-box"></div>
+            </section>
+        </main>
+    </div>
+    <script src="main.js"></script>
+</body>
+</html>

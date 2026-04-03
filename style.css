@@ -1,0 +1,323 @@
+:root {
+    --primary: #4a6cf7;
+    --primary-hover: #3855d6;
+    --bg: #f4f7ff;
+    --card-bg: #ffffff;
+    --text-main: #1a1f3b;
+    --text-muted: #64748b;
+    --danger: #ef4444;
+    --success: #22c55e;
+    --border: #e2e8f0;
+    --shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+}
+
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    font-family: 'Inter', -apple-system, system-ui, sans-serif;
+    background-color: var(--bg);
+    color: var(--text-main);
+    line-height: 1.5;
+    padding: 40px 20px;
+}
+
+.app-container {
+    max-width: 1000px;
+    margin: 0 auto;
+}
+
+.app-header {
+    text-align: center;
+    margin-bottom: 40px;
+}
+
+.app-header h1 {
+    font-size: 2.2rem;
+    font-weight: 800;
+    margin-bottom: 8px;
+}
+
+.subtitle {
+    color: var(--text-muted);
+    font-size: 1.1rem;
+}
+
+.card {
+    background: var(--card-bg);
+    border-radius: 16px;
+    padding: 24px;
+    box-shadow: var(--shadow);
+    margin-bottom: 24px;
+    border: 1px solid var(--border);
+}
+
+h2, h3 {
+    margin-bottom: 16px;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.inputs-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+    gap: 12px;
+    margin-bottom: 20px;
+}
+
+.student-row {
+    display: flex;
+    gap: 8px;
+    background: #f8fafc;
+    padding: 8px;
+    border-radius: 10px;
+    border: 1px solid var(--border);
+    transition: all 0.2s;
+}
+
+.student-row input {
+    flex: 1;
+    border: 1px solid var(--border);
+    border-radius: 6px;
+    padding: 8px 12px;
+    font-size: 14px;
+}
+
+.student-row input:focus {
+    outline: none;
+    border-color: var(--primary);
+    box-shadow: 0 0 0 3px rgba(74, 108, 247, 0.1);
+}
+
+.student-row button {
+    background: #fff;
+    color: var(--text-muted);
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    width: 36px;
+    height: 36px;
+    cursor: pointer;
+    font-size: 1.1rem;
+    transition: all 0.2s;
+}
+
+.student-row button:hover {
+    background: #fee2e2;
+    color: var(--danger);
+    border-color: #fecaca;
+}
+
+.btn-group {
+    display: flex;
+    gap: 12px;
+    margin-top: 20px;
+}
+
+.btn-primary, .btn-secondary {
+    padding: 12px 24px;
+    border-radius: 10px;
+    font-weight: 600;
+    font-size: 0.95rem;
+    cursor: pointer;
+    transition: all 0.2s ease;
+    border: none;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.btn-secondary {
+    background-color: #f1f5f9;
+    color: #475569;
+    border: 1px solid var(--border);
+    flex: 1;
+}
+
+.btn-secondary:hover {
+    background-color: #e2e8f0;
+    color: var(--text-main);
+}
+
+.btn-primary {
+    background-color: var(--primary);
+    color: white;
+    flex: 2;
+    box-shadow: 0 4px 12px rgba(74, 108, 247, 0.2);
+}
+
+.btn-primary:hover {
+    background-color: var(--primary-hover);
+    transform: translateY(-1px);
+    box-shadow: 0 6px 15px rgba(74, 108, 247, 0.3);
+}
+
+.btn-danger {
+    background: #fee2e2;
+    color: var(--danger);
+    border: none;
+    padding: 8px 16px;
+    border-radius: 8px;
+    cursor: pointer;
+    font-weight: 600;
+}
+
+.stage-banner {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding-bottom: 20px;
+    margin-bottom: 20px;
+    border-bottom: 2px solid #f1f5f9;
+}
+
+.stage-info {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+}
+
+#stageIcon { font-size: 2rem; }
+#stageLabel { font-weight: 700; font-size: 1.2rem; }
+
+.exam-grid {
+    display: grid;
+    grid-template-columns: 1.4fr 1fr;
+    gap: 24px;
+    margin-bottom: 30px;
+}
+
+.student-active-card {
+    background: linear-gradient(135deg, #ffffff 0%, #f8faff 100%);
+    border: 2px solid var(--primary);
+    border-radius: 14px;
+    padding: 24px;
+}
+
+.book-id {
+    color: var(--primary);
+    font-weight: 700;
+    font-size: 0.9rem;
+    margin-bottom: 10px;
+}
+
+.task-box {
+    background: #fff;
+    border-left: 4px solid var(--primary);
+    padding: 15px;
+    margin: 20px 0;
+    border-radius: 4px;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.02);
+}
+
+.task-box label {
+    display: block;
+    font-size: 0.75rem;
+    color: var(--text-muted);
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    margin-bottom: 5px;
+}
+
+.grade-input-group {
+    display: flex;
+    gap: 12px;
+}
+
+.grade-input-group input {
+    width: 100px;
+    padding: 12px;
+    border: 2px solid var(--border);
+    border-radius: 10px;
+    font-size: 1.1rem;
+    font-weight: 800;
+    text-align: center;
+}
+
+.scroll-area {
+    height: 250px;
+    overflow-y: auto;
+    padding-right: 8px;
+}
+
+.queue-item {
+    padding: 12px;
+    background: #f8fafc;
+    border: 1px solid var(--border);
+    border-radius: 10px;
+    margin-bottom: 10px;
+    transition: all 0.3s;
+}
+
+.queue-item.active {
+    border-color: var(--primary);
+    background: #eef2ff;
+    transform: translateX(8px);
+}
+
+.horizontal {
+    display: flex;
+    gap: 12px;
+    height: auto;
+    padding: 10px 0;
+}
+
+.completed-card {
+    min-width: 170px;
+    background: #fff;
+    border: 1px solid var(--border);
+    padding: 15px;
+    border-radius: 12px;
+    text-align: center;
+}
+
+.badge {
+    padding: 4px 10px;
+    border-radius: 6px;
+    color: white;
+    font-weight: 800;
+    font-size: 0.8rem;
+}
+
+.grade-excelent { background-color: #22c55e !important; box-shadow: 0 2px 6px rgba(34, 197, 94, 0.2); }
+.grade-good { background-color: #3b82f6 !important; box-shadow: 0 2px 6px rgba(59, 130, 246, 0.2); }
+.grade-satisfy { background-color: #eab308 !important; color: #000 !important; box-shadow: 0 2px 6px rgba(234, 179, 8, 0.2); }
+.grade-fail { background-color: #ef4444 !important; box-shadow: 0 2px 6px rgba(239, 68, 68, 0.2); }
+
+.success-card {
+    grid-column: 1 / -1;
+    background: #dcfce7;
+    color: #166534;
+    padding: 40px;
+    border-radius: 16px;
+    text-align: center;
+    font-weight: 800;
+    font-size: 1.4rem;
+    border: 2px dashed #22c55e;
+    animation: fadeIn 0.5s ease;
+}
+
+@keyframes fadeIn {
+    from { opacity: 0; transform: translateY(10px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+.log-box {
+    height: 140px;
+    overflow-y: auto;
+    background: #0f172a;
+    color: #94a3b8;
+    padding: 15px;
+    border-radius: 12px;
+    font-family: 'Fira Code', monospace;
+    font-size: 0.85rem;
+}
+
+.log-entry {
+    margin-bottom: 6px;
+    border-left: 2px solid #334155;
+    padding-left: 10px;
+}
