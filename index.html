@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="uk">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>КП №6 - Закрите хешування | Бригада 11</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+<div class="app-container">
+    <header class="app-header">
+        <h1>КП №6 - Закрите хешування</h1>
+    </header>
+
+    <main class="main-content">
+
+        <section class="card">
+            <h2>Додати запис</h2>
+            <div class="form-grid">
+                <div class="form-group">
+                    <label>Ім'я та прізвище</label>
+                    <input type="text" id="inputName" placeholder="Іванов Іван" />
+                </div>
+                <div class="form-group">
+                    <label>Дата народження</label>
+                    <input type="date" id="inputDob" />
+                </div>
+                <div class="form-group">
+                    <label>Група</label>
+                    <input type="text" id="inputGroup" placeholder="ІС-51" />
+                </div>
+            </div>
+
+            <div class="method-selector">
+                <label>Активний метод для пошуку/видалення:</label>
+                <div class="radio-group">
+                    <label class="radio-label">
+                        <input type="radio" name="method" value="lp" checked>
+                        <span>Лінійне зондування</span>
+                    </label>
+                    <label class="radio-label">
+                        <input type="radio" name="method" value="ck">
+                        <span>Хешування Зозулею</span>
+                    </label>
+                </div>
+            </div>
+
+            <div class="btn-group">
+                <button class="btn-primary" id="addRecordBtn">Додати запис</button>
+            </div>
+        </section>
+
+        <section class="card search-card">
+            <h2>Пошук за ім'ям</h2>
+            <div class="search-grid">
+                <input type="text" id="searchInput" placeholder="Введіть ім'я" />
+                <button class="btn-secondary" id="searchBtn">🔍 Знайти</button>
+            </div>
+            <div id="searchResult" class="search-result"></div>
+        </section>
+
+        <section class="card">
+            <h2>Видалення запису</h2>
+            <div class="delete-grid">
+                <input type="text" id="deleteInput" placeholder="Ім'я для видалення" />
+                <button class="btn-danger" id="deleteBtn">Видалити</button>
+            </div>
+        </section>
+
+        <section class="card">
+            <div class="table-header-row">
+                <h2>Хеш-таблиці (розмір: 17 слотів)</h2>
+                <div class="stats-row">
+                    <span class="stat-badge" id="statTotal">Всього: 0</span>
+                    <span class="stat-badge" id="statCollisions">Колізії: 0</span>
+                    <span class="stat-badge" id="statFilled">Заповнено: 0%</span>
+                </div>
+            </div>
+
+            <div class="tables-grid">
+                <div class="table-col lp-col">
+                    <h3>Лінійне зондування</h3>
+                    <div id="lpTableViz" class="slot-list"></div>
+                </div>
+
+                <div class="table-col cka-col">
+                    <h3>Зозуля - Таблиця A</h3>
+                    <div id="cuckooAViz" class="slot-list"></div>
+                </div>
+
+                <div class="table-col ckb-col">
+                    <h3>Зозуля - Таблиця B</h3>
+                    <div id="cuckooBViz" class="slot-list"></div>
+                </div>
+            </div>
+        </section>
+
+        <section class="card log-card">
+            <h2>Журнал дій</h2>
+            <div id="activityLog" class="activity-log"></div>
+        </section>
+
+    </main>
+</div>
+<script src="main.js"></script>
+</body>
+</html>
