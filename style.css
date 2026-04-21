@@ -242,3 +242,97 @@ button:active { transform: scale(0.97); }
     .search-grid { flex-direction: column; }
     #searchInput { width: 100%; }
 }
+
+.privacy-note {
+    font-size: 0.85rem;
+    color: #7c6cf8;
+    background: #f0eeff;
+    border-radius: 8px;
+    padding: 6px 14px;
+    display: inline-block;
+    margin-top: 6px;
+}
+
+.section-hint {
+    font-size: 0.85rem;
+    color: var(--text-muted);
+    margin-bottom: 14px;
+    line-height: 1.5;
+}
+
+.label-hint {
+    font-weight: 400;
+    color: #a0aec0;
+    font-size: 0.78rem;
+}
+
+.delete-grid {
+    display: flex;
+    gap: 12px;
+    align-items: center;
+    flex-wrap: wrap;
+}
+.delete-grid input[type="text"] {
+    flex: 2;
+    padding: 10px 14px;
+    border: 2px solid var(--border);
+    border-radius: 10px;
+    font-size: 0.95rem;
+    outline: none;
+}
+.delete-grid input[type="date"] {
+    flex: 1;
+    padding: 10px 14px;
+    border: 2px solid var(--border);
+    border-radius: 10px;
+    font-size: 0.95rem;
+    outline: none;
+}
+.delete-grid input:focus { border-color: var(--danger); }
+
+.chip-hidden {
+    font-family: 'Courier New', monospace;
+    font-size: 0.72rem;
+    font-weight: 700;
+    color: #7c6cf8;
+    letter-spacing: 0.03em;
+}
+
+#searchInput {
+    padding: 10px 14px;
+    border: 2px solid var(--border);
+    border-radius: 10px;
+    font-size: 0.95rem;
+    outline: none;
+    width: 100%;
+    max-width: 260px;
+}
+#searchInput:focus { border-color: var(--primary); }
+
+.search-result {
+    margin-top: 14px;
+    min-height: 36px;
+    font-size: 0.9rem;
+    font-weight: 500;
+    padding: 4px 4px;
+    line-height: 1.7;
+}
+
+.search-explanation { margin-bottom: 14px; }
+.hash-hint {
+    background: #f0eeff;
+    border-left: 3px solid var(--primary);
+    border-radius: 6px;
+    padding: 8px 14px;
+    font-size: 0.875rem;
+    color: var(--text-main);
+    line-height: 1.6;
+}
+.hash-hint code {
+    background: #ddd6fe;
+    border-radius: 4px;
+    padding: 1px 5px;
+    font-size: 0.82rem;
+    font-family: 'Courier New', monospace;
+}
+.hash-hint.hidden { display: none; }

@@ -3,84 +3,90 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>КП №5</title>
+    <title>КП №5 - Відкрите хешування | Бригада 11</title>
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
-    <div class="app-container">
-        <header class="app-header">
-            <h1>КП №5</h1>
-        </header>
+<div class="app-container">
+    <header class="app-header">
+        <h1>КП №5 - Відкрите хешування</h1>
+    </header>
 
-        <main class="main-content">
+    <main class="main-content">
 
-            <section id="setupSection" class="card">
-                <h2>Додати запис про хлопця</h2>
-                <div class="form-grid">
-                    <div class="form-group">
-                        <label>Ім'я та прізвище</label>
-                        <input type="text" id="inputName" placeholder="Іванов Іван" />
-                    </div>
-                    <div class="form-group">
-                        <label>Дата народження</label>
-                        <input type="date" id="inputDob" />
-                    </div>
-                    <div class="form-group">
-                        <label>Група</label>
-                        <input type="text" id="inputGroup" placeholder="ІС-51" />
-                    </div>
+        <section class="card">
+            <h2>Додати запис</h2>
+            <div class="form-grid">
+                <div class="form-group">
+                    <label>Ім'я та прізвище </label>
+                    <input type="text" id="inputName" placeholder="Іванов Іван" />
                 </div>
-
-                <div class="hash-selector">
-                    <label>Активна хеш-функція:</label>
-                    <div class="radio-group">
-                        <label class="radio-label">
-                            <input type="radio" name="hashFunc" value="1" checked> 
-                            <span>Хеш-функція 1 (за місяцем народження, 12 бакетів)</span>
-                        </label>
-                        <label class="radio-label">
-                            <input type="radio" name="hashFunc" value="2"> 
-                            <span>Хеш-функція 2 (сума ASCII імені mod 26, 26 бакетів)</span>
-                        </label>
-                    </div>
+                <div class="form-group">
+                    <label>Дата народження</label>
+                    <input type="date" id="inputDob" />
                 </div>
-
-                <div class="btn-group">
-                    <button class="btn-secondary" id="loadSampleBtn">Завантажити приклад</button>
-                    <button class="btn-primary" id="addRecordBtn">➕ Додати запис</button>
+                <div class="form-group">
+                    <label>Група</label>
+                    <input type="text" id="inputGroup" placeholder="ІС-51" />
                 </div>
-            </section>
+            </div>
 
-            <section class="card search-card">
-                <h2>Пошук / Видалення</h2>
-                <div class="search-grid">
-                    <input type="text" id="searchInput" placeholder="Введіть ім'я для пошуку..." />
-                    <button class="btn-secondary" id="searchBtn">Знайти</button>
-                    <button class="btn-danger" id="deleteBtn">Видалити</button>
+            <div class="hash-selector">
+                <label>Активна хеш-функція для відображення:</label>
+                <div class="radio-group">
+                    <label class="radio-label">
+                        <input type="radio" name="hashFunc" value="1" checked>
+                        <span>Хеш-функція 1 (за місяцем народження, 12 бакетів)</span>
+                    </label>
+                    <label class="radio-label">
+                        <input type="radio" name="hashFunc" value="2">
+                        <span>Хеш-функція 2 (сума ASCII імені mod 26, 26 бакетів)</span>
+                    </label>
                 </div>
-                <div id="searchResult" class="search-result"></div>
-            </section>
+            </div>
 
-            <section class="card">
-                <div class="table-header-row">
-                    <h2>Хеш-таблиця</h2>
-                    <div class="stats-row">
-                        <span class="stat-badge" id="statTotal">Всього: 0</span>
-                        <span class="stat-badge" id="statCollisions">Колізії: 0</span>
-                        <span class="stat-badge" id="statFilled">Заповнено бакетів: 0</span>
-                    </div>
+            <div class="btn-group">
+                <button class="btn-primary" id="addRecordBtn">Додати запис</button>
+            </div>
+        </section>
+
+        <section class="card search-card">
+            <h2>Пошук за хешем</h2>
+            <div class="search-grid">
+                <input type="text" id="searchInput" placeholder="Місяць | Рядок" />
+                <button class="btn-secondary" id="searchBtn">Знайти за хешем</button>
+            </div>
+            <div id="searchResult" class="search-result"></div>
+        </section>
+
+        <section class="card">
+            <h2>Видалення запису</h2>
+            <div class="delete-grid">
+                <input type="text" id="deleteInput" placeholder="Ім'я" />
+                <input type="date" id="deleteDob"   title="Потрібно для ХФ1" />
+                <button class="btn-danger" id="deleteBtn">Видалити</button>
+            </div>
+        </section>
+
+        <section class="card">
+            <div class="table-header-row">
+                <h2>Хеш-таблиця</h2>
+                <div class="stats-row">
+                    <span class="stat-badge" id="statTotal">Всього: 0</span>
+                    <span class="stat-badge" id="statCollisions">Колізії: 0</span>
+                    <span class="stat-badge" id="statFilled">Заповнено бакетів: 0</span>
                 </div>
-                <div id="hashTableViz" class="hash-table-viz"></div>
-            </section>
+            </div>
+            <div id="hashTableViz" class="hash-table-viz"></div>
+        </section>
 
-            <!-- Журнал дій -->
-            <section class="card log-card">
-                <h2>Журнал дій</h2>
-                <div id="activityLog" class="activity-log"></div>
-            </section>
+        <section class="card log-card">
+            <h2>Журнал дій</h2>
+            <div id="activityLog" class="activity-log"></div>
+        </section>
 
-        </main>
-    </div>
-    <script src="main.js"></script>
+    </main>
+</div>
+<script src="main.js"></script>
 </body>
 </html>
