@@ -454,7 +454,7 @@ function deleteRecord() {
         renderAll();
         setTimeout(() => { highlightLP = { idx: -1 }; highlightCK = { idxA: -1, idxB: -1 }; renderAll(); }, 2000);
     } else {
-        setResult(`❌ Запис не знайдено (перевірте ім'я)`, false);
+        setResult(`Запис не знайдено (перевірте ім'я)`, false);
     }
     el('deleteInput').value = '';
 }
