@@ -272,6 +272,7 @@ function searchRecord() {
     renderHashTable();
     setTimeout(() => { highlightedBucket = { h1: -1, h2: -1 }; renderHashTable(); }, 2500);
 }
+
 function deleteRecord() {
     const name = el('deleteInput').value.trim();
     const dob  = el('deleteDob').value;
@@ -295,13 +296,11 @@ function deleteRecord() {
     el('deleteInput').value = el('deleteDob').value = '';
 }
 
-
 document.addEventListener('DOMContentLoaded', () => {
     initTables();
     el('addRecordBtn').onclick  = addRecord;
     el('searchBtn').onclick     = searchRecord;
     el('deleteBtn').onclick     = deleteRecord;
-    el('loadSampleBtn').onclick = loadSample;
     document.querySelectorAll('input[name="hashFunc"]').forEach(r =>
         r.addEventListener('change', () => {
             el('searchInput').value = '';
