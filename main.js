@@ -197,9 +197,9 @@ function renderHashTable() {
                 const chip = document.createElement('div');
                 chip.className = `record-chip ${chipClass}${isHighlighted ? ' highlighted-chip' : ''}`;
                 chip.innerHTML = `
-                    <span class="chip-hidden">🔒 ${item.hiddenKey}</span>
-                    <span class="chip-dob">🎂 ${formatDob(item.value.dob)}</span>
-                    <span class="chip-group">📚 ${item.value.group}</span>
+                    <span class="chip-hidden">${item.hiddenKey}</span>
+                    <span class="chip-dob">${formatDob(item.value.dob)}</span>
+                    <span class="chip-group">${item.value.group}</span>
                 `;
                 chipWrap.appendChild(chip);
                 chainDiv.appendChild(chipWrap);
@@ -254,17 +254,17 @@ function searchRecord() {
 
     if (records.length > 0) {
         const lines = records.map(r =>
-            `&nbsp;&nbsp;🔒 ${r.hiddenKey} | 🎂 ${formatDob(r.value.dob)} | 📚 ${r.value.group}`
+            `&nbsp;&nbsp;${r.hiddenKey} | ${formatDob(r.value.dob)} | ${r.value.group}`
         ).join('<br>');
         setSearchResult(
-            `✅ ${hashFormula} → бакет [${bucketIndex}] (${label})<br>Знайдено ${records.length} запис(ів), кроків: ${steps}<br>${lines}`,
+            `${hashFormula} → бакет [${bucketIndex}] (${label})<br>Знайдено ${records.length} запис(ів), кроків: ${steps}<br>${lines}`,
             true
         );
         addLog(`Пошук: ${hashFormula} → бакет[${bucketIndex}], знайдено ${records.length} запис(ів)`, 'search');
         highlightedBucket = hash === '1' ? { h1: bucketIndex, h2: -1 } : { h1: -1, h2: bucketIndex };
     } else {
         setSearchResult(
-            `❌ ${hashFormula} → бакет [${bucketIndex}] (${label}) — порожній`,
+            `${hashFormula} → бакет [${bucketIndex}] (${label}) — порожній`,
             false
         );
         addLog(`Пошук: ${hashFormula} → бакет[${bucketIndex}], порожньо`, 'search');
@@ -286,12 +286,12 @@ function deleteRecord() {
     const hk = hideKey(name);
     if (r1.deleted || r2.deleted) {
         addLog(`Видалено: ключ ${hk} | HF1:бакет[${r1.bucketIndex}] HF2:бакет[${r2.bucketIndex}]`, 'delete');
-        setSearchResult(`✅ Запис з ключем ${hk} видалено`, true);
+        setSearchResult(`Запис з ключем ${hk} видалено`, true);
         highlightedBucket = { h1: r1.bucketIndex, h2: r2.bucketIndex };
         renderHashTable();
         setTimeout(() => { highlightedBucket = { h1: -1, h2: -1 }; renderHashTable(); }, 2000);
     } else {
-        setSearchResult(`❌ Запис не знайдено (перевірте ім'я та дату)`, false);
+        setSearchResult(`Запис не знайдено (перевірте ім'я та дату)`, false);
     }
     el('deleteInput').value = el('deleteDob').value = '';
 }
