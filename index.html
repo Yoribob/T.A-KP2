@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="uk">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Армада проти піратів — КП8</title>
+  <link rel="stylesheet" href="style.css"/>
+</head>
+<body>
+<div id="app">
+  <header>
+    <h1>Основні типи двійкові дерева пошуку - КП8</h1>
+    <p class="subtitle">Армада проти пиратів</p>
+  </header>
+
+  <!-- Tree type tabs -->
+  <div class="card">
+    <div class="section-title">Тип дерева пошуку</div>
+    <div class="tabs">
+      <button class="tab-btn" id="tab-bst"      onclick="switchTree('bst')">Звичайне BST</button>
+      <button class="tab-btn" id="tab-balanced"  onclick="switchTree('balanced')">Збалансоване дерево</button>
+      <button class="tab-btn" id="tab-rb"        onclick="switchTree('rb')">Червоно-чорне дерево</button>
+    </div>
+
+    <div class="control-grid">
+      <div class="field">
+        <label for="n-ships">Кількість кораблів армади</label>
+        <input type="number" id="n-ships" min="3" max="19" value="9" step="2"/>
+      </div>
+      <div class="field">
+        <label for="n-pirates">Кількість піратів</label>
+        <input type="number" id="n-pirates" min="1" max="200" value="70"/>
+      </div>
+      <div class="btn-group">
+        <button onclick="buildFleet()">Побудувати флот</button>
+        <button onclick="attack()" class="btn-primary">Сигнал атаки</button>
+        <button onclick="groundShip()" class="btn-danger">Мілина</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- Result -->
+  <section id="result-section" class="result-section hidden card">
+    <div id="result-banner" class="result-banner"></div>
+  </section>
+
+  <!-- Log -->
+  <div class="card">
+    <div class="section-title">Журнал</div>
+    <div id="log-box" class="log-box"></div>
+  </div>
+
+  <!-- Path -->
+  <div class="card">
+    <div class="section-title">Шлях сигналу</div>
+    <div id="path-list" class="path-list"><span class="muted"></span></div>
+  </div>
+
+  <!-- Tree SVG -->
+  <div class="card">
+    <div class="section-title" id="tree-title">Дерево флоту</div>
+    <div id="tree-container">
+      <svg id="tree-svg"></svg>
+    </div>
+  </div>
+
+  <!-- Legend -->
+  <div class="card">
+    <div class="section-title">Позначення</div>
+    <div class="legend">
+      <div class="legend-item"><span class="legend-dot admiral"></span> Адмірал (корінь)</div>
+      <div class="legend-item"><span class="legend-dot visited"></span> Відвіданий вузол</div>
+      <div class="legend-item"><span class="legend-dot found"></span> Атакуючий корабель</div>
+      <div class="legend-item"><span class="legend-dot newship"></span> Новий корабель</div>
+      <div class="legend-item"><span class="legend-dot grounded"></span> На мілині (вибув)</div>
+      <div class="legend-item"><span class="legend-dot normal"></span> Звичайний корабель</div>
+      <div class="legend-item"><span class="rb-dot" style="color:var(--rb-red)">●</span> Червоний вузол (ЧЧД)</div>
+      <div class="legend-item"><span class="rb-dot" style="color:var(--rb-black)">○</span> Чорний вузол (ЧЧД)</div>
+    </div>
+  </div>
+
+  <!-- Benchmark -->
+  
+
+<script src="bst.js"></script>
+<script src="trees.js"></script>
+<script src="main.js"></script>
+</body>
+</html>
