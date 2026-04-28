@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="uk">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Двійкове дерево пошуку - КП7</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <div id="app">
+    <header>
+      <h1>Армада проти піратів</h1>
+      <p class="subtitle">Армада проти піратів</p>
+    </header>
+
+    <section class="controls-section">
+      <div class="control-grid">
+        <div class="field">
+          <label for="n-ships">Кількість кораблів армади</label>
+          <input type="number" id="n-ships" min="3" max="19" value="7" step="2" />
+        </div>
+        <div class="field">
+          <label for="n-pirates">Кількість піратів</label>
+          <input type="number" id="n-pirates" min="1" max="200" value="55" />
+        </div>
+        <div class="btn-group">
+          <button id="btn-build" onclick="buildFleet()">Побудувати флот</button>
+          <button id="btn-attack" onclick="attack()" class="btn-primary">Сигнал атаки</button>
+        </div>
+      </div>
+    </section>
+
+    <section id="result-section" class="result-section hidden">
+      <div id="result-banner" class="result-banner"></div>
+    </section>
+
+    <section class="log-section">
+      <div class="section-title">Журнал</div>
+      <div id="log-box" class="log-box">
+      </div>
+    </section>
+
+    <section class="path-section">
+      <div class="section-title">Шлях сигналу</div>
+      <div id="path-list" class="path-list">
+       
+      </div>
+    </section>
+
+    <section class="tree-section">
+      <div class="section-title">Дерево флоту</div>
+      <div id="tree-container">
+        <svg id="tree-svg"></svg>
+      </div>
+    </section>
+
+    <section class="legend-section">
+      <div class="section-title">Позначення</div>
+      <div class="legend">
+        <div class="legend-item"><span class="legend-dot admiral"></span> Адмірал (корінь)</div>
+        <div class="legend-item"><span class="legend-dot visited"></span> Відвіданий вузол</div>
+        <div class="legend-item"><span class="legend-dot found"></span> Атакуючий корабель</div>
+        <div class="legend-item"><span class="legend-dot newship"></span> Новий корабель</div>
+        <div class="legend-item"><span class="legend-dot normal"></span> Звичайний корабель</div>
+      </div>
+    </section>
+  </div>
+
+  <script src="bst.js"></script>
+  <script src="main.js"></script>
+</body>
+</html>
