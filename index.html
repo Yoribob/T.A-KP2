@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="uk">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>КП10</title>
+  <link rel="stylesheet" href="style.css"/>
+</head>
+<body>
+<div id="app">
+  <header>
+    <h1>КП10</h1>
+    <p class="subtitle">Швидке сортування (Quick Sort)</p>
+  </header>
+
+  <div class="card">
+    <div class="section-title">Сценарій</div>
+    <div class="tabs">
+      <button class="tab-btn" id="tab-s1" onclick="switchScenario(1)">Початковий список</button>
+      <button class="tab-btn" id="tab-s2" onclick="switchScenario(2)">Нові кораблі</button>
+      <button class="tab-btn" id="tab-s3" onclick="switchScenario(3)">Повтори матросів</button>
+    </div>
+
+    <div class="control-grid">
+      <div class="field">
+        <label for="n-ships">Кількість кораблів</label>
+        <input type="number" id="n-ships" min="4" max="40" value="16"/>
+      </div>
+      <div class="field">
+        <label for="pivot-select">Стратегія опорного елемента</label>
+        <select id="pivot-select">
+          <option value="last">Останній елемент</option>
+          <option value="median3">Медіана трьох</option>
+          <option value="three-way">Три групи</option>
+        </select>
+      </div>
+      <div class="btn-group">
+        <button onclick="generateFleet()">Генерувати флот</button>
+        <button onclick="sortFleet()" class="btn-primary">Сортувати</button>
+      </div>
+    </div>
+  </div>
+
+  <section id="result-section" class="result-section hidden card">
+    <div id="result-banner" class="result-banner"></div>
+  </section>
+
+  <div class="card">
+    <div class="section-title">Журнал</div>
+    <div id="log-box" class="log-box"></div>
+  </div>
+
+  <div class="card">
+    <div class="section-title">Візуалізація флоту (висота = кількість матросів)</div>
+    <div id="ships-vis" class="ships-vis"></div>
+  </div>
+
+  <div class="card">
+    <div class="section-title">Перелік кораблів</div>
+    <div id="fleet-chips" class="fleet-list"><span class="muted">Згенеруйте флот</span></div>
+  </div>
+
+</div>
+
+<script src="sorting.js"></script>
+<script src="main.js"></script>
+</body>
+</html>
