@@ -12,13 +12,13 @@ const SCENARIO_LABELS = {
 const ALGO_FOR_SCENARIO = {
   1: 'bubble',
   2: 'shell',
-  3: 'quick',
+  3: 'insertion',
 };
 
 const ALGO_LABELS = {
-  bubble: 'Бульбашкою',
-  shell:  'Шелла',
-  quick:  'Швидке (Quick Sort)',
+  bubble:    'Бульбашкою',
+  shell:     'Шелла',
+  insertion: 'Вставками (Insertion Sort)',
 };
 
 function setLog(html) { document.getElementById('log-box').innerHTML = html; }
@@ -81,7 +81,7 @@ function sortFleet() {
   animating = true;
   const algoKey = document.getElementById('algo-select').value;
 
-  const fns = { bubble: bubbleSort, shell: shellSort, quick: quickSort };
+  const fns = { bubble: bubbleSort, shell: shellSort, insertion: insertionSort };
 
   const t0 = performance.now();
   const result = fns[algoKey]([...currentArr]);

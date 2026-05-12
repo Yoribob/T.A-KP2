@@ -32,32 +32,21 @@ function shellSort(arr) {
   return { sorted: a, steps };
 }
 
-function quickSort(arr) {
+function insertionSort(arr) {
   const a = [...arr];
   const steps = [];
-
-  function partition(lo, hi) {
-    const pivot = a[hi];
-    let i = lo - 1;
-    for (let j = lo; j < hi; j++) {
-      if (a[j] <= pivot) {
-        i++;
-        [a[i], a[j]] = [a[j], a[i]];
-        steps.push({ swap: [i, j], arr: [...a] });
-      }
+  for (let i = 1; i < a.length; i++) {
+    const key = a[i];
+    let j = i - 1;
+    while (j >= 0 && a[j] > key) {
+      a[j + 1] = a[j];
+      steps.push({ moved: j + 1, arr: [...a] });
+      j--;
     }
-    [a[i + 1], a[hi]] = [a[hi], a[i + 1]];
-    steps.push({ swap: [i + 1, hi], arr: [...a] });
-    return i + 1;
+    if (j + 1 !== i) {
+      a[j + 1] = key;
+      steps.push({ moved: j + 1, arr: [...a] });
+    }
   }
-
-  function qs(lo, hi) {
-    if (lo >= hi) return;
-    const p = partition(lo, hi);
-    qs(lo, p - 1);
-    qs(p + 1, hi);
-  }
-
-  qs(0, a.length - 1);
   return { sorted: a, steps };
 }
